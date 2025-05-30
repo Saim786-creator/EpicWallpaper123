@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EpicWall - Modern Wallpaper Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="style.css">
+  <link rel="icon" type="image/x-icon" href="file:///C:/Users/HP/Pictures/Camera%20Roll/Epic.png">
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #121212;
+      color: #eee;
+      line-height: 1.6;
+    }
+    a {
+      color: #1effb0;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #14d6a4;
+    }
+
+    .header {
+      background: #1f1f1f;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1effb0;
+    }
+    .nav a {
+      margin-left: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .hero {
+      padding: 60px 30px;
+      text-align: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      color: #cbd5e1;
+    }
+    .btn-primary {
+      display: inline-block;
+      background-color: #1effb0;
+      color: #121212;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    .btn-primary:hover {
+      background-color: #14d6a4;
+    }
+
+    .search-form {
+      margin: 20px auto 40px;
+      max-width: 400px;
+      display: flex;
+      justify-content: center;
+    }
+    .search-form input[type="text"] {
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px 0 0 30px;
+      outline: none;
+      width: 75%;
+      background: #2c2c2c;
+      color: #eee;
+    }
+    .search-form button {
+      padding: 10px 20px;
+      border: none;
+      background: #1effb0;
+      color: #121212;
+      font-weight: 700;
+      border-radius: 0 30px 30px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .search-form button:hover {
+      background: #14d6a4;
+    }
+
+    .section {
+      padding: 40px 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section h2 {
+      margin-bottom: 25px;
+      font-size: 2rem;
+      text-align: center;
+      color: #1effb0;
+    }
+
+    /* Wallpaper Grid */
+    .wallpaper-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 25px;
+    }
+    .wallpaper-item {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 15px rgba(30,255,176,0.2);
+      transition: transform 0.3s ease;
+    }
+    .wallpaper-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #1effb0;
+    }
+    .wallpaper-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .download-btn {
+      display: inline-block;
+      margin: 15px 0 20px;
+      padding: 10px 25px;
+      background-color: #1effb0;
+      color: #121212;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .download-btn:hover {
+      background-color: #14d6a4;
+    }
+
+    /* Categories */
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .categories li a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1effb0;
+      border: 2px solid #1effb0;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .categories li a:hover {
+      background-color: #1effb0;
+      color: #121212;
+    }
+
+    /* Upload Section */
+    .upload-form {
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+    }
+    .custom-file-upload {
+      display: inline-block;
+      padding: 12px 30px;
+      cursor: pointer;
+      background-color: #1effb0;
+      color: #121212;
+      border-radius: 30px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      transition: background-color 0.3s ease;
+    }
+    .custom-file-upload:hover {
+      background-color: #14d6a4;
+    }
+    .upload-message {
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      color: #ccc;
+    }
+    .contact p, .contact a {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+    .contact a {
+      color: #1effb0;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #1f1f1f;
+      color: #888;
+      text-align: center;
+      padding: 15px 30px;
+      font-size: 0.9rem;
+      margin-top: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .nav a {
+        margin-left: 15px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">EpicWall</div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#popular">Popular</a>
+    <a href="#categories">Categories</a>
+    <a href="#upload">Upload</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h1>Stunning Wallpapers. All in One Place.</h1>
+  <p>Browse thousands of high-quality wallpapers for desktop and mobile.</p>
+  <form id="searchForm" class="search-form">
+    <input type="text" id="searchInput" placeholder="Search wallpapers..." />
+    <button type="submit" type="button">Search</button>
+  </form>
+  <a href="#popular" class="btn-primary">Explore Now</a>
+</section>
+
+<section id="popular" class="section">
+  <h2>Popular Wallpapers</h2>
+  <div class="wallpaper-grid">
+    <div class="wallpaper-item">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1080&q=80" alt="Mountain" />
+      <a href="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1080&q=80" download="mountain-wallpaper.jpg" class="download-btn">Download</a>
+    </div>
+    <div class="wallpaper-item">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1080&q=80" alt="Beach" />
+      <a href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1080&q=80" download="beach-wallpaper.jpg" class="download-btn">Download</a>
+    </div>
+    <div class="wallpaper-item">
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1080&q=80" alt="Forest" />
+      <a href="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1080&q=80" download="forest-wallpaper.jpg" class="download-btn">Download</a>
+    </div>
+    <div class="wallpaper-item">
+      <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1080&q=80" alt="Galaxy" />
+      <a href="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1080&q=80" download="galaxy-wallpaper.jpg" class="download-btn">Download</a>
+    </div>
+  </div>
+</section>
+
+<section id="categories" class="section">
+  <h2>Categories</h2>
+  <ul class="categories">
+    <li><a href="https://unsplash.com/s/photos/nature-wallpaper" target="_blank" rel="noopener noreferrer">Nature</a></li>
+    <li><a href="https://unsplash.com/s/photos/abstract-wallpaper" target="_blank" rel="noopener noreferrer">Abstract</a></li>
+    <li><a href="https://unsplash.com/s/photos/space-wallpaper" target="_blank" rel="noopener noreferrer">Space</a></li>
+    <li><a href="https://unsplash.com/s/photos/minimal-wallpaper" target="_blank" rel="noopener noreferrer">Minimal</a></li>
+  </ul>
+</section>
+
+<section id="upload" class="section">
+  <h2>Upload Your Wallpaper</h2>
+  <form id="uploadForm" class="upload-form">
+    <label for="fileUpload" class="custom-file-upload">
+      Choose File
+      <span id="fileName">No file chosen</span>
+    </label>
+    <input type="file" id="fileUpload" accept="image/*" required hidden />
+    <button type="submit" class="btn-primary">Submit</button>
+  </form>
+  <p id="uploadMessage" class="upload-message"></p>
+</section>
+
+<section id="contact" class="section contact">
+  <h2>Contact</h2>
+  <p>Have a suggestion or want to contribute?</p>
+  <p>Email: <a href="mailto:contact@epicwall.com">contact@epicwall.com</a></p>
+  <p>Phone: <a href="tel:+923290787558">+92 329 0787558</a></p>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2025 EpicWall. All rights reserved.</p>
+</footer>
+
+<script>
+  // Upload section interactive script
+  const fileInput = document.getElementById('fileUpload');
+  const fileName = document.getElementById('fileName');
+  const uploadForm = document.getElementById('uploadForm');
+  const uploadMessage = document.getElementById('uploadMessage');
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length > 0) {
+      fileName.textContent = fileInput.files[0].name;
+      uploadMessage.textContent = '';
+    } else {
+      fileName.textContent = 'No file chosen';
+    }
+  });
+
+  uploadForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (fileInput.files.length === 0) {
+      uploadMessage.textContent = 'Please select a file before submitting.';
+      uploadMessage.style.color = 'red';
+      return;
+    }
+    // Simulate upload success (no real backend)
+    uploadMessage.textContent = 'File "' + fileInput.files[0].name + '" uploaded successfully!';
+    uploadMessage.style.color = 'green';
+    uploadForm.reset();
+    fileName.textContent = 'No file chosen';
+  });
+
+  // Search bar functionality
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  const wallpaperGrid = document.querySelector('.wallpaper-grid');
+  const wallpaperItems = wallpaperGrid.querySelectorAll('.wallpaper-item');
+
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = searchInput.value.toLowerCase().trim();
+
+    wallpaperItems.forEach(item => {
+      const altText = item.querySelector('img').alt.toLowerCase();
+      if (altText.includes(query)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

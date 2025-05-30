@@ -1,0 +1,265 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #121212;
+  color: #eee;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  background-color: #1f1f1f;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1effb0;
+}
+
+.nav a {
+  color: #eee;
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #1effb0;
+}
+
+.hero {
+  padding: 60px 30px;
+  text-align: center;
+  background: linear-gradient(135deg, #1effb0 0%, #12b886 100%);
+  color: #121212;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.search-form {
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  width: 250px;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 10px 18px;
+  background-color: #121212;
+  border: none;
+  color: #1effb0;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 0 6px 6px 0;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: #0e0e0e;
+}
+
+.btn-primary {
+  background-color: #1effb0;
+  color: #121212;
+  padding: 14px 28px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #14d6a4;
+}
+
+.section {
+  padding: 40px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #1effb0;
+  text-align: center;
+}
+
+.wallpaper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.wallpaper-item {
+  background-color: #222;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(30, 255, 176, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.wallpaper-item:hover {
+  transform: scale(1.03);
+}
+
+.wallpaper-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 2px solid #1effb0;
+}
+
+.download-btn {
+  background-color: #1effb0;
+  color: #121212;
+  font-weight: 700;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0 0 12px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #14d6a4;
+}
+
+.categories {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.categories li a {
+  color: #1effb0;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.categories li a:hover {
+  color: #14d6a4;
+}
+
+/* Upload section styles */
+.upload-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+
+.custom-file-upload {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+#fileName {
+  font-weight: 400;
+  font-size: 14px;
+  color: #f1f1f1;
+  user-select: none;
+}
+
+.upload-form button.btn-primary {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.upload-form button.btn-primary:hover {
+  background-color: #1e7e34;
+}
+
+.upload-message {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Contact section */
+.contact p, .contact a {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #eee;
+}
+
+.contact a {
+  color: #1effb0;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact a:hover {
+  color: #14d6a4;
+}
+
+.footer {
+  background-color: #1f1f1f;
+  color: #888;
+  text-align: center;
+  padding: 15px 30px;
+  font-size: 0.9rem;
+  margin-top: 30px;
+}
